@@ -3,6 +3,9 @@ package com.kaczmarek.githubstars.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Class containing necessary data about GitHub user
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserData {
 

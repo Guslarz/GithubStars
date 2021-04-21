@@ -4,9 +4,6 @@ import com.kaczmarek.githubstars.entity.Repository;
 import com.kaczmarek.githubstars.entity.RepositoryList;
 import com.kaczmarek.githubstars.entity.TotalStars;
 import com.kaczmarek.githubstars.entity.UserData;
-import com.kaczmarek.githubstars.error.GithubConnectionError;
-import com.kaczmarek.githubstars.error.UserNotFoundException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,7 +13,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class User {
+/**
+ * Class responsible for loading data about selected GitHub user
+ */
+public class UserDAO {
 
   private static final int REPOS_PER_PAGE = 100;
   private static final String USER_URL = "https://api.github.com/users/{user}";
@@ -25,39 +25,36 @@ public class User {
 
   private final String name;
 
-  public User(String name) {
+  public UserDAO(String name) {
     this.name = name;
   }
 
   public RepositoryList getRepositoryList() {
     List<Repository> repositories = getRepositoryStream().collect(Collectors.toList());
-    return new RepositoryList(name, repositories);
+    return new RepositoryList(repositories);
   }
 
   public TotalStars getTotalStars() {
     int starCount = getRepositoryStream().mapToInt(Repository::getStars).sum();
-    return new TotalStars(name, starCount);
-  }
-
-  private void handleResponseStatus(HttpStatus status) {
-    if (status == HttpStatus.NOT_FOUND) throw new UserNotFoundException();
-    if (status != HttpStatus.OK) throw new GithubConnectionError();
+    return new TotalStars(starCount);
   }
 
   private UserData getUserData() {
     RestTemplate restTemplate = new RestTemplate();
+    restTemplate.setErrorHandler(new UserErrorHandler());
+
     ResponseEntity<UserData> userDataResponseEntity =
         restTemplate.getForEntity(USER_URL, UserData.class, name);
-    handleResponseStatus(userDataResponseEntity.getStatusCode());
 
     return userDataResponseEntity.getBody();
   }
 
   private Stream<Repository> getSingleRepositoriesPage(int page) {
     RestTemplate restTemplate = new RestTemplate();
+    restTemplate.setErrorHandler(new UserErrorHandler());
+
     ResponseEntity<Repository[]> responseEntity =
         restTemplate.getForEntity(REPOS_URL, Repository[].class, name, page, REPOS_PER_PAGE);
-    handleResponseStatus(responseEntity.getStatusCode());
 
     Repository[] repositories = responseEntity.getBody();
     if (repositories == null) return Stream.of();
