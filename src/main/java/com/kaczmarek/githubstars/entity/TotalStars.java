@@ -2,10 +2,10 @@ package com.kaczmarek.githubstars.entity;
 
 public class TotalStars {
 
-  private String user;
-  private Integer stars;
+  private final String user;
+  private final int stars;
 
-  public TotalStars(String user, Integer stars) {
+  public TotalStars(String user, int stars) {
     this.user = user;
     this.stars = stars;
   }
@@ -14,7 +14,7 @@ public class TotalStars {
     return user;
   }
 
-  public Integer getStars() {
+  public int getStars() {
     return stars;
   }
 }

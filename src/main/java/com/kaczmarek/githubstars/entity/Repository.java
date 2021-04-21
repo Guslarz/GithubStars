@@ -7,7 +7,7 @@ public class Repository {
 
   private String name;
   private String description;
-  private Integer stars;
+  private int stars;
 
   public String getName() {
     return name;

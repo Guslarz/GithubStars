@@ -4,8 +4,8 @@ import java.util.List;
 
 public class RepositoryList {
 
-  private String user;
-  private List<Repository> repositories;
+  private final String user;
+  private final List<Repository> repositories;
 
   public RepositoryList(String user, List<Repository> repositories) {
     this.user = user;
