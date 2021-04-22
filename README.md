@@ -37,6 +37,7 @@ Odpowiedź jest w formacie JSON.
     - opis i url repozytorium w liście
     - liczba forków - dla poszczególnych repozytoriów i suma
     - zliczanie liczby projektów w poszczególnych językach
+- Te same dane ale dla repozytoriów wyszukanych przez endpoint `GET /search/repositories` GitHub API
 - Lepsza obsługa błędów - informacja co poszło nie tak
 - Interfejs graficzny, np. aplikacja internetowa lub mobilna 
 
