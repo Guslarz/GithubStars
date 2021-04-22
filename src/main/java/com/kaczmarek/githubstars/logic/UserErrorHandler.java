@@ -16,8 +16,10 @@ public class UserErrorHandler extends DefaultResponseErrorHandler {
 
   @Override
   public void handleError(ClientHttpResponse response) throws IOException {
-    if (response.getStatusCode() == HttpStatus.NOT_FOUND)
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    switch (response.getStatusCode()) {
+      case NOT_FOUND: throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+      case FORBIDDEN: throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+    }
     super.handleError(response);
   }
 }

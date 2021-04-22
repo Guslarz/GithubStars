@@ -1,6 +1,9 @@
 package com.kaczmarek.githubstars.entity;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * Class containing data about single repository.
@@ -15,6 +18,7 @@ public class Repository {
     return name;
   }
 
+  @JsonGetter("stars")
   public int getStars() {
     return stars;
   }
@@ -23,6 +27,7 @@ public class Repository {
     this.name = name;
   }
 
+  @JsonSetter("stargazers_count")
   public void setStars(Integer stars) {
     this.stars = stars;
   }
