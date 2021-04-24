@@ -1,4 +1,4 @@
-package com.kaczmarek.githubstars.logic;
+package com.kaczmarek.githubstars.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;

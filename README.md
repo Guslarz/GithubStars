@@ -31,8 +31,9 @@ Można to zrobić np. poprzez użycie narzędzia cURL:
 Odpowiedź jest w formacie JSON.
 
 ## Propozycje rozwoju
-- Autentykacja zapytań do GitHub API
-- Paginacja listy repozytoriów
+- Autentykacja zapytań do GitHub API w celu zwiększenia limitu zapytań na godzinę
+- Paginacja listy repozytoriów w celu wydajniejszej obsługi użytkowników z dużą liczbą
+repozytoriów (wymagania narzucały wyświetlanie całej listy, więc paginacji brak)
 - Więcej danych, np.:
     - opis i url repozytorium w liście
     - liczba forków - dla poszczególnych repozytoriów i suma
@@ -40,4 +41,4 @@ Odpowiedź jest w formacie JSON.
 - Te same dane ale dla repozytoriów wyszukanych przez endpoint `GET /search/repositories` GitHub API
 - Lepsza obsługa błędów - informacja co poszło nie tak
 - Interfejs graficzny, np. aplikacja internetowa lub mobilna 
-
+- Dodanie testów

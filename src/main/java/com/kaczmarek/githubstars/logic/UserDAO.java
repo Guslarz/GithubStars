@@ -1,5 +1,6 @@
 package com.kaczmarek.githubstars.logic;
 
+import com.kaczmarek.githubstars.api.UserErrorHandler;
 import com.kaczmarek.githubstars.entity.Repository;
 import com.kaczmarek.githubstars.entity.RepositoryList;
 import com.kaczmarek.githubstars.entity.TotalStars;
