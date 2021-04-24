@@ -33,7 +33,7 @@ Odpowiedź jest w formacie JSON.
 ## Propozycje rozwoju
 - Autentykacja zapytań do GitHub API w celu zwiększenia limitu zapytań na godzinę
 - Paginacja listy repozytoriów w celu wydajniejszej obsługi użytkowników z dużą liczbą
-repozytoriów (wymagania narzucały wyświetlanie całej listy, więc paginacji brak)
+repozytoriów (wymagania zrozumiałem jako wyświetlanie całej listy, więc paginacji brak)
 - Więcej danych, np.:
     - opis i url repozytorium w liście
     - liczba forków - dla poszczególnych repozytoriów i suma
